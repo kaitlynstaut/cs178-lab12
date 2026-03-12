@@ -38,12 +38,18 @@ def analyze(word):
     for i in word.lower():
         if i in ('a', 'e', 'i', 'o', 'u'):
             vow += 1
+    
+    # Step 3: reverse word
+    reverse = ''
+    for i in word:
+        reverse = i + reverse
 
     # render_template passes all variables into analyze.html
     return render_template('analyze.html',
                            word=word,
                            num_chars=char,
-                           num_vowels=vow)
+                           num_vowels=vow,
+                           reversed_word=reverse)
 
 
 # ============================================================
