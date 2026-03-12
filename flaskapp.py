@@ -30,7 +30,20 @@ def hello(name):
 # ============================================================
 @app.route('/analyze/<word>')
 def analyze(word):
-    return str(len(word))
+    #Step 1: character count
+    char = len(word)
+
+    # Step 2: count vowels
+    vow = 0
+    for i in word.lower():
+        if i in ('a', 'e', 'i', 'o', 'u'):
+            vow += 1
+
+    # render_template passes all variables into analyze.html
+    return render_template('analyze.html',
+                           word=word,
+                           num_chars=char,
+                           num_vowels=vow)
 
 
 # ============================================================
